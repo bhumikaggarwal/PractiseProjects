@@ -10,8 +10,16 @@ const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
 const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling ;
 const userInputs = addMovieModal.querySelectorAll('input');
 //const userInputs = addMovieModal.getElementByTagName('input');
+const entryTextSection = document.getElementById('entry-text');
 
 const movies = [] ;
+const updateUI = () => {
+    if(movies.length === 0) {
+        entryTextSection.style.display = block ;
+    } else {
+        entryTextSection.style.display = none ;
+    }
+};
 const togglingBackdrop = () => {
     backdrop.classList.toggle('visible');
  };
@@ -54,6 +62,7 @@ movies.push(newMovies);
 console.log(movies);
 togglingTheMovieButton();
 clearUserInputs();
+updateUI();
 };
 startAddMovieButton.addEventListener('click',togglingTheMovieButton);
 backdrop.addEventListener('click',backdropClickHandler);
